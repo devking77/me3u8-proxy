@@ -7,7 +7,7 @@ import { cacheRoutes } from "./utils/cache-routes";
 dotenv.config();
 
 const app = express();
-const PORT = 4040;
+ const port = process.env.PORT || 4040;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +17,6 @@ app.use(cacheRoutes());
 app.get("/", (_, res) => { res.send("hianime streaming m3u8 proxy") });
 app.use('/', router);
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+app.listen(port, () => console.log(`http://localhost:${port}`));
 
 export default app;
